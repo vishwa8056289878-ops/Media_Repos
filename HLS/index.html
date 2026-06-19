@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <video id="v" width="640" controls></video>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script>
+    const v = document.getElementById('v');
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource('stream.m3u8');
+      hls.attachMedia(v);
+      hls.on(Hls.Events.MANIFEST_PARSED, () => v.play());
+    }
+  </script>
+</body>
+</html>
